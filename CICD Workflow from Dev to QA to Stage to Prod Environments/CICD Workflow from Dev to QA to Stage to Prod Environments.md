@@ -20,7 +20,7 @@ We follow a **Git branching strategy** where each environment has its own branch
 
 ---
 
-**2. CI/CD Workflow with Branch-Based Pipeline Triggers**
+**2. CI/CD Workflow**
 
 **Step 1: Development (Dev) Workflow**
 
