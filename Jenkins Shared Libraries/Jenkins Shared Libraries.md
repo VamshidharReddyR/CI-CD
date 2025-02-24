@@ -1,93 +1,265 @@
-**Jenkins Shared Libraries**
+**Shared Libraries in Jenkins**
 
-**Introduction**
+**1. What are Shared Libraries in Jenkins?**
 
-Jenkins Shared Libraries are essential for reusing common scripts across multiple CI/CD pipelines, promoting efficiency, and reducing duplication. This guide explores their benefits, configuration, and implementation in Jenkins.
+Jenkins Shared Libraries are reusable Groovy scripts that can be used across multiple Jenkins pipelines. These libraries help in maintaining modularity, reducing redundancy, and standardizing CI/CD pipelines across different projects. Instead of duplicating code in each Jenkinsfile, you can extract common logic into a shared library and use it in multiple pipelines.
 
-**Why Use Jenkins Shared Libraries?**
+**2. Why Use Shared Libraries?**
 
-Managing multiple Jenkins pipelines can be complex, especially in organizations with numerous microservices. Shared Libraries help streamline this by centralizing reusable logic, reducing maintenance overhead, and ensuring consistency across pipelines.
+•	**Code Reusability**: Avoid repetition of common pipeline logic.
 
-**Key Benefits**
+•	**Maintainability**: Centralized updates instead of modifying multiple pipelines.
 
-•	**Code Reusability**: Avoid redundancy by reusing shared scripts.
+•	**Modularity**: Segregate pipeline functionalities into separate modules.
 
-•	**Standardization**: Maintain a consistent structure across all pipelines.
+•	**Security**: Restrict execution of unapproved scripts by using approved libraries.
 
-•	**Simplified Maintenance**: Modify shared logic once and propagate changes across all pipelines.
+•	**Scalability**: Works well for large-scale CI/CD setups.
 
-•	**Security & Compliance**: Minimize risk by centralizing configurations.
+---
 
-•	**Scalability**: Easily manage CI/CD for multiple microservices.
+**3. Components of a Shared Library**
 
-**How Jenkins Shared Libraries Work**
+A Shared Library consists of the following main components:
 
-A Shared Library is a set of Groovy scripts stored in a Git repository, which Jenkins pipelines can reference.
+**i. Directory Structure**
 
-**Implementation Steps**
-
-**1. Set Up a Git Repository for Shared Libraries**
-
-Structure your repository as follows:
+The library should be stored in a Git repository with a specific structure:
 
 ```bash
-shared-library/
+└── shared-library-repo/
     ├── vars/
-    │   ├── buildPipeline.groovy
-    │   ├── checkoutCode.groovy
-    │   ├── sonarAnalysis.groovy
+    │   ├── deployApp.groovy
+    │   ├── testApp.groovy
+    │   ├── buildApp.groovy
+    ├── src/
+    │   └── com/example/Utils.groovy
+    ├── resources/
+    │   ├── config.yaml
+    ├── test/
+    │   ├── testScripts.groovy
+    ├── README.md
 ```
 
-**2. Define Shared Library Functions**
+•	vars/: Contains global pipeline functions (entry points).
 
-Inside vars/, create buildPipeline.groovy:
+•	src/: Contains helper Groovy classes (organized under packages).
 
-```bash
-def call() {
-    sh 'mvn clean install'
-}
-```
+•	resources/: Contains external configuration files.
 
-**3. Configure Shared Library in Jenkins**
+•	test/: Contains test scripts for unit testing the library.
 
-•	Go to **Manage Jenkins > Configure System**.
+---
 
-•	Under **Global Pipeline Libraries**, add:
+**ii. Writing a Shared Library Function**
 
-o	**Name**: sharedLib
-
-o	**Default Version**: main
-
-o	**Repository URL**: https://github.com/org/shared-library.git
-
-**4. Use Shared Library in a Jenkins Pipeline**
-
-Modify your Jenkinsfile:
+Example of a Shared Library function inside vars/deployApp.groovy:
 
 ```bash
-@Library('sharedLib') _
-
-pipeline {
-    agent any
-    stages {
-        stage('Checkout Code') {
-            steps {
-                checkoutCode()
-            }
-        }
-        stage('Build') {
-            steps {
-                buildPipeline()
+def call(String appName, String environment) {
+    pipeline {
+        agent any
+        stages {
+            stage('Deploy') {
+                steps {
+                    script {
+                        echo "Deploying ${appName} to ${environment}"
+                        sh "kubectl apply -f deployment.yaml"
+                    }
+                }
             }
         }
     }
 }
 ```
 
-**Practical Use Case**
+This function can be invoked from a Jenkinsfile:
 
-When onboarding new microservices, developers can use a pre-defined Jenkins pipeline structure by referencing the Shared Library. This approach minimizes repetitive tasks, accelerates onboarding, and enhances maintainability.
+```bash
+@Library('my-shared-library') _
+deployApp('my-app', 'staging')
+```
+
+---
+
+**iii. Writing a Utility Class**
+
+If you want a helper function to be used across multiple library files, you can define it in src/com/example/Utils.groovy:
+package com.example
+
+```bash
+class Utils {
+    static void printMessage(String message) {
+        println "INFO: ${message}"
+    }
+}
+```
+
+You can call this in vars/deployApp.groovy:
+
+```bash
+import com.example.Utils
+
+def call(String appName, String environment) {
+    pipeline {
+        agent any
+        stages {
+            stage('Deploy') {
+                steps {
+                    script {
+                        Utils.printMessage("Deploying ${appName} to ${environment}")
+                        sh "kubectl apply -f deployment.yaml"
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+---
+
+**4. Loading a Shared Library in Jenkins**
+
+**i. Configuring Global Shared Libraries**
+
+1.	Navigate to **Jenkins Dashboard → Manage Jenkins → Configure System**.
+
+2.	Scroll to **Global Pipeline Libraries**.
+
+3.	Click **Add** and enter:
+
+o	**Name**: my-shared-library
+
+o	**Source Code Management**: Select Git
+
+o	**Repository URL**: https://github.com/myorg/shared-library.git
+
+o	**Default Version**: main (or specify a tag/branch)
+
+o	**Load Implicitly**: (Optional) Loads the library automatically in pipelines.
+
+---
+
+**ii. Loading Libraries in Jenkinsfile**
+
+There are two ways to load the shared library in Jenkinsfile:
+
+**1. Implicit Loading**
+
+If you checked "**Load Implicitly**" in Jenkins settings, the library will be available automatically:
+
+```bash
+deployApp('my-app', 'production')
+```
+
+**2. Explicit Loading**
+
+If "**Load Implicitly**" is unchecked, load it using @Library annotation:
+
+```bash
+@Library('my-shared-library') _
+deployApp('my-app', 'production')
+```
+
+You can also specify a branch/tag:
+
+```bash
+@Library('my-shared-library@develop') _
+deployApp('my-app', 'staging')
+```
+
+For multiple libraries:
+
+```bash
+@Library(['my-shared-library', 'another-library']) _
+```
+
+---
+
+**5. Versioning and Tagging Shared Libraries**
+
+To ensure stability and avoid breaking changes, you should version your shared library using Git tags or branches.
+
+•	**Stable Versions**: Use Git tags (v1.0.0, v1.1.0)
+
+•	**Development Versions**: Use branches (feature-x, dev, staging)
+
+Example:
+
+```bash
+@Library('my-shared-library@v1.0.0') _
+```
+
+---
+
+**6. Security in Shared Libraries**
+
+•	**Approved Scripts**: Use **In-process Script Approval** to review new scripts before execution.
+
+•	**Restrict Execution**: Set permissions so only certain teams can modify libraries.
+
+•	**Use @NonCPS Annotation**: When using closures or certain Groovy constructs that may break serialization.
+
+---
+
+**7. Best Practices for Jenkins Shared Libraries**
+
+1.	**Follow a Modular Approach**: Split functionality into different Groovy files.
+
+2.	**Use src/ for Complex Logic**: Keep vars/ simple and delegate logic to src/.
+
+3.	**Version Control**: Always use specific versions to avoid breaking changes.
+   
+4.	**Testing**: Implement unit tests for library functions.
+
+5.	**Logging & Debugging**: Use meaningful logging (echo, println).
+
+6.	**Access Control**: Restrict who can edit the shared library repository.
+
+---
+
+**8. Example: Full Jenkinsfile with Shared Library**
+
+```bash
+@Library('my-shared-library@v1.2') _
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                buildApp('my-app')
+            }
+        }
+        stage('Test') {
+            steps {
+                testApp('my-app')
+            }
+        }
+        stage('Deploy') {
+            steps {
+                deployApp('my-app', 'production')
+            }
+        }
+    }
+}
+```
+
+---
+
+**9. Real-World Use Cases of Shared Libraries**
+
+•	**Standardizing CI/CD Pipelines**: Common pipeline logic for all applications.
+
+•	**Reusable Deployment Scripts**: Kubernetes, Docker, AWS CloudFormation, etc.
+
+•	**Security & Compliance Checks**: Automate security scans across projects.
+
+•	**Multi-cloud Deployment**: Centralized functions to handle AWS, Azure, GCP.
+
+•	**Integration with Monitoring Tools**: Standardized logging and alerting mechanisms.
+
+---
 
 **Conclusion**
-
-Jenkins Shared Libraries are a powerful way to optimize CI/CD pipelines, making them scalable, maintainable, and secure. Implementing them effectively can significantly enhance your DevOps workflow.
+Jenkins Shared Libraries are a powerful way to modularize and reuse pipeline code. By centralizing logic into a single repository, teams can improve maintainability, enhance security, and streamline CI/CD workflows. Proper versioning, testing, and security measures ensure a robust pipeline setup across multiple projects.
