@@ -16,7 +16,7 @@ Each environment has a specific purpose and validation steps before deploying ch
 
 **1. CI/CD Workflow**
 
-We follow a Git branching strategy where each environment has its own branch:
+We follow a **Git branching strategy** where each environment has its own branch:
 
 ---
 
