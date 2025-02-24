@@ -104,7 +104,7 @@ o	Enables rollback if issues occur.
 
 ---
 
-4. Example CI/CD Pipeline Triggers Based on Branch
+**4. Example CI/CD Pipeline Triggers Based on Branch**
 
 GitLab CI/CD Example
 
