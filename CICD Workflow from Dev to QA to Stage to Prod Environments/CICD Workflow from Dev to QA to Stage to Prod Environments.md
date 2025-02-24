@@ -157,7 +157,7 @@ deploy_to_production:
 
 **1. Blue-Green Deployment**:
 
-•	Two environments (blue and green), switch traffic between them for zero downtime.
+   •	Two environments (blue and green), switch traffic between them for zero downtime.
 
 **2. Canary Deployment**:
 
