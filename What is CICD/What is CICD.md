@@ -6,17 +6,17 @@ CI/CD stands for **Continuous Integration (CI) and Continuous Deployment (CD) or
 
 CI focuses on automatically integrating code changes from multiple developers into a shared repository multiple times a day. The main goal is to detect and fix issues early.
 
-•	Developers push code to a version control system (e.g., GitHub, GitLab).
+• Developers push code to a version control system (e.g., GitHub, GitLab).
 
-•	Automated builds and tests are triggered using CI tools like **Jenkins, GitHub Actions, GitLab CI/CD, or CircleCI.**
+• Automated builds and tests are triggered using CI tools like **Jenkins, GitHub Actions, GitLab CI/CD, or CircleCI.**
 
-•	If tests pass, the code is merged into the main branch.
+• If tests pass, the code is merged into the main branch.
 
 **Continuous Deployment (CD) vs. Continuous Delivery (CD)**
 
-•	**Continuous Delivery**: The code is automatically tested and packaged but requires manual approval before deployment.
+• **Continuous Delivery**: The code is automatically tested and packaged but requires manual approval before deployment.
 
-•	**Continuous Deployment**: The code is automatically tested and deployed to production without manual intervention.
+• **Continuous Deployment**: The code is automatically tested and deployed to production without manual intervention.
 
 ---
 
