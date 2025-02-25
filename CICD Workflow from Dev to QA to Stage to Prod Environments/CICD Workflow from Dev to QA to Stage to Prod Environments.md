@@ -28,7 +28,8 @@ o	**Push Image to Registry**: The verified image is pushed to a container regist
 
 o	**Kubernetes Deployment**: The updated image is deployed to a Kubernetes cluster.
 
-o	**GitOps Deployment**: ArgoCD, Flux, or Spinnaker updates the Kubernetes manifest in the Git repository and deploys the application.
+o	**GitOps Deployment**: ArgoCD, Flux, or Spinnaker updates the Kubernetes manifest in the Git repository and deploys the 
+    application.
 
 **Limitation of Single Environment Deployment**
 
