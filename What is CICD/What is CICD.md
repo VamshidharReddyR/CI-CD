@@ -26,7 +26,7 @@ A CI/CD pipeline automates the process of integrating, testing, and deploying co
 
 1.	**Code Commit**
 
-o	Developers push code to a shared repository (GitHub, GitLab, Bitbucket).
+     o Developers push code to a shared repository (GitHub, GitLab, Bitbucket).
 
 2.	**Automated Build**
 
