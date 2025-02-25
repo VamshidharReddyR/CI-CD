@@ -138,27 +138,27 @@ Modern CI/CD pipelines use cloud-native and containerized solutions for **faster
 
 1.	**Cloud-Native CI/CD**
 
-o	AWS CodePipeline, Azure DevOps, Google Cloud Build
+   o AWS CodePipeline, Azure DevOps, Google Cloud Build
 
 2.	**Containerized Deployments**
 
-o	Docker, Kubernetes, Helm
+   o Docker, Kubernetes, Helm
 
 3.	**Microservices Architecture**
 
-o	CI/CD for each microservice instead of monolithic apps
+  o CI/CD for each microservice instead of monolithic apps
 
 4.	**Multi-Cloud Deployments**
 
-o	Deployments on AWS, Azure, and GCP for reliability
+   o Deployments on AWS, Azure, and GCP for reliability
 
 5.	**Security-First Approach (DevSecOps)**
 
-o	Automated vulnerability scanning, policy enforcement
+   o Automated vulnerability scanning, policy enforcement
 
 6.	**AI-Powered CI/CD**
 
-o	AI-driven testing, smart rollback mechanisms
+   o AI-driven testing, smart rollback mechanisms
 
 **CI/CD Example in a Top MNC (Netflix, Amazon, Google)**
 
