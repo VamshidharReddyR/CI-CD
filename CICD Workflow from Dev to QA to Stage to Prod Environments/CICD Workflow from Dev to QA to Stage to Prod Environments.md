@@ -53,7 +53,7 @@ To manage code transitions across environments, organizations follow a branching
 
 •	**Feature Branches**: Created for new feature development.
 
-•	**Main Branch**: Contains stable, actively developed code.
+•	**Main (or master) Branch**: Contains stable, actively developed code.
 
 •	**Release Branches**: Used to prepare code for deployment.
 
