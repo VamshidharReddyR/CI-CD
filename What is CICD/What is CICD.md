@@ -14,9 +14,9 @@ CI focuses on automatically integrating code changes from multiple developers in
 
 **Continuous Deployment (CD) vs. Continuous Delivery (CD)**
 
-• **Continuous Delivery**: The code is automatically tested and packaged but requires manual approval before deployment.
+  • **Continuous Delivery**: The code is automatically tested and packaged but requires manual approval before deployment.
 
-• **Continuous Deployment**: The code is automatically tested and deployed to production without manual intervention.
+  • **Continuous Deployment**: The code is automatically tested and deployed to production without manual intervention.
 
 ---
 
