@@ -30,23 +30,23 @@ A CI/CD pipeline automates the process of integrating, testing, and deploying co
 
 2.	**Automated Build**
 
-o	The CI system compiles the code and resolves dependencies.
+     o The CI system compiles the code and resolves dependencies.
 
 3.	**Automated Testing**
 
-o	Unit tests, integration tests, security scans, and performance tests are executed.
+     o Unit tests, integration tests, security scans, and performance tests are executed.
 
 4.	**Artifact Generation**
 
-o	A deployable artifact (Docker image, JAR, etc.) is created.
+     o A deployable artifact (Docker image, JAR, etc.) is created.
 
 5.	**Deployment (CD)**
 
-o	The artifact is deployed to staging, QA, or production environments.
+     o The artifact is deployed to staging, QA, or production environments.
 
 6.	**Monitoring & Feedback**
 
-o	Logs, metrics, and alerts are monitored to ensure stability.
+     o Logs, metrics, and alerts are monitored to ensure stability.
 
 **Tools Used**:
 
