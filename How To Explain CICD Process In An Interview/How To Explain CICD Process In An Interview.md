@@ -113,17 +113,17 @@ If you are not using GitOps, you can:
 2.	**Jenkins pipeline triggers** using a webhook.
 
 3.	**CI Stages**:
-     o	Checkout code
+      o	Checkout code
 
-     o	Build & Unit testing
+      o	Build & Unit testing
 
-     o	Code scanning (SonarQube)
+      o	Code scanning (SonarQube)
 
-     o	Build Docker image
+      o	Build Docker image
 
-     o	Image scanning
+      o	Image scanning
 
-     o	Push image to Docker Hub/ECR
+      o	Push image to Docker Hub/ECR
 
 **5.	CD Stages**:
 
