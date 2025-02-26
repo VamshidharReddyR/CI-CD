@@ -126,8 +126,7 @@ If you are not using GitOps, you can:
       o	Push image to Docker Hub/ECR
 
 **5.	CD Stages**:
-
-    o	Update Kubernetes YAML manifests in a Git repository
+      o	Update Kubernetes YAML manifests in a Git repository
 
     o	ArgoCD (or FluxCD) **detects changes and deploys the application**
 
