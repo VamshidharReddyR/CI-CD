@@ -24,7 +24,7 @@ Many DevOps engineers struggle to explain their CI/CD pipeline even after implem
 
 **3. Continuous Integration (CI) Process**
 
-Once Jenkins is triggered, it executes multiple stages:
+Once Jenkins or GitLab or GitHub Actions is triggered, it executes multiple stages:
 
 **a) Checkout Stage**
 
