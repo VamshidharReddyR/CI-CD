@@ -140,7 +140,7 @@ If you are not using GitOps, you can:
 
 •	**Use a structured approach**: Start with Git, move to CI, then CD, and finally deployment.
 
-•	**Explain each stage clearly** and mention the tools you use (e.g., Jenkins, SonarQube, ArgoCD, Kubernetes).
+•	**Explain each stage clearly** and mention the tools you use (e.g., Jenkins or GitLab or GitHub Actions, SonarQube, ArgoCD, Kubernetes).
 
 •	**If asked about Jenkins pipelines**, mention that you use **Declarative Pipelines** instead of **Scripted Pipelines** because they are more structured and easier to collaborate on.
 
