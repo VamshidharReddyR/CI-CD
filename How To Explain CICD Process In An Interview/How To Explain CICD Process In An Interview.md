@@ -88,7 +88,7 @@ After the image is pushed to the registry, it must be **deployed to the Kubernet
 
 •	The **Kubernetes YAML manifests (or Helm charts)** are stored in a **separate Git repository**.
 
-•	The Jenkins pipeline **updates the Git repository** with the new image tag.
+•	The Jenkins or GitLab or GitHub Actions pipeline **updates the Git repository** with the new image tag.
 
 •	**ArgoCD** (or **FluxCD**) continuously watches the repository for changes.
 
