@@ -127,9 +127,7 @@ If you are not using GitOps, you can:
 
 **5.	CD Stages**:
       o	Update Kubernetes YAML manifests in a Git repository
-
       o	ArgoCD (or FluxCD) **detects changes and deploys the application**
-
       o	If GitOps is not used, deployment can be handled with **Ansible, shell scripts, or Python**
 
 ---
