@@ -20,7 +20,7 @@ Many DevOps engineers struggle to explain their CI/CD pipeline even after implem
 
 •	A **pull request is reviewed** and merged.
 
-•	This triggers the **CI/CD pipeline** using a **webhook** in an orchestrator like **Jenkins**.
+•	This triggers the **CI/CD pipeline** using a **webhook** in an orchestrator like **Jenkins or GitLab or GitHub Actions**.
 
 **3. Continuous Integration (CI) Process**
 
