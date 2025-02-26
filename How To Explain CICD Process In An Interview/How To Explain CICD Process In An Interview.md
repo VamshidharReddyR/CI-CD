@@ -55,6 +55,7 @@ Once Jenkins is triggered, it executes multiple stages:
 •	Scan the built **Docker image** for **security vulnerabilities in OS packages and dependencies**.
 
 •	Common tools for image scanning:
+
 o	**Trivy**
 
 o	**Clair**
