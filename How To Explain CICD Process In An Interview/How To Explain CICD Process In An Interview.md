@@ -113,6 +113,7 @@ If you are not using GitOps, you can:
 2.	**Jenkins or GitLab or GitHub Actions pipeline triggers** using a webhook.
 
 3.	**CI Stages**:
+
       o	Checkout code
 
       o	Build & Unit testing
@@ -125,7 +126,7 @@ If you are not using GitOps, you can:
 
       o	Push image to Docker Hub/ECR
 
-**5.	CD Stages**:
+**4.	CD Stages**:
 
   o	Update Kubernetes YAML manifests in a Git repository
       
