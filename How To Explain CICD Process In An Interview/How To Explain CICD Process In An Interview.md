@@ -110,7 +110,7 @@ If you are not using GitOps, you can:
 
 1.	**Developer commits code** to GitHub/GitLab/Bitbucket.
   
-2.	**Jenkins pipeline triggers** using a webhook.
+2.	**Jenkins or GitLab or GitHub Actions pipeline triggers** using a webhook.
 
 3.	**CI Stages**:
       o	Checkout code
