@@ -56,7 +56,7 @@ With **Neon**, we can:
 
 **1.	Create a Free Neon Account**
 
-o	Sign up at (https://neon.tech/) using GitHub or Google.
+o	Sign up at **Neon** (https://neon.tech/) using GitHub or Google.
 
 o	Create a new project (e.g., cicd-demo).
 
