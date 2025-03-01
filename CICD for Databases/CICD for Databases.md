@@ -142,13 +142,6 @@ jobs:
           api_key: ${{ secrets.NEON_API_KEY }}
           project_id: ${{ secrets.NEON_PROJECT_ID }}
           branch_name: ${{ needs.setup.outputs.branch_name }}
-Add Database Migration Commands
-Modify the create-branch job to run database migrations:
-
-- name: Run Database Migrations
-  run: |
-    npm install
-    npm run migrate up
 ```
 
 **3.	Add Database Migration Commands**
