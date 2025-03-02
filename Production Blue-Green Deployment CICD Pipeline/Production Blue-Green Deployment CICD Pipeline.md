@@ -97,7 +97,7 @@ sudo systemctl start jenkins
 
 **Install required plugins:**
 
-•	**ipeline, SonarQube Scanner, Docker, Kubernetes, and Nexus Artifact Uploader**.
+•	**Pipeline, SonarQube Scanner, Docker, Kubernetes, and Nexus Artifact Uploader**.
 
 **SonarQube Setup**
 
