@@ -4,7 +4,7 @@
 
 This repository demonstrates how to implement **CI/CD for databases** using **GitHub Actions** and **Neon**, a managed PostgreSQL platform.
 
-Many teams struggle with database CI/CD, especially when handling **ephemeral database environments**. This guide provides a solution to automate database testing in CI/CD pipelines while ensuring **cost efficiency, database stability**, and **developer isolation**.
+Many teams struggle with database, especially when handling **ephemeral database environments**. This guide provides a solution to automate database testing in CI/CD pipelines while ensuring **cost efficiency, database stability**, and **developer isolation**.
 
 **Problem Statement**
 
